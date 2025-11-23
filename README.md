@@ -1,4 +1,51 @@
 # ==============================
+# CELL 1 – SETTINGS & WIDGETS
+# ==============================
+import ipywidgets as widgets
+from IPython.display import display
+
+print("🔧 Bubble Grader Settings\n")
+
+# ---- Listening Answer Key (10 questions) ----
+listening_inputs = [widgets.Text(value="", description=f"L{i+1}") for i in range(10)]
+listening_box = widgets.VBox([
+    widgets.HTML("<b>Listening Answer Key (A–E). Use 0 or leave blank to IGNORE a question:</b>"),
+    *listening_inputs
+])
+
+# ---- Structure Answer Key (20 questions) ----
+structure_inputs = [widgets.Text(value="", description=f"S{i+1}") for i in range(20)]
+structure_box = widgets.VBox([
+    widgets.HTML("<b>Structure Answer Key (A–D):</b>"),
+    *structure_inputs
+])
+
+# ---- Reading Answer Key (10 questions) ----
+reading_inputs = [widgets.Text(value="", description=f"R{i+1}") for i in range(10)]
+reading_box = widgets.VBox([
+    widgets.HTML("<b>Reading Answer Key (A–D). Use 0 or leave blank to IGNORE:</b>"),
+    *reading_inputs
+])
+
+# ---- Point Values per Question ----
+points_listening = widgets.FloatText(value=1.0, description="Listening per Q")
+points_structure = widgets.FloatText(value=1.5, description="Structure per Q")
+points_reading = widgets.FloatText(value=1.0, description="Reading per Q")
+
+points_box = widgets.VBox([
+    widgets.HTML("<b>Point Values (per question):</b>"),
+    points_listening,
+    points_structure,
+    points_reading
+])
+
+display(listening_box, structure_box, reading_box, points_box)
+
+print("\n👉 Fill in the answer keys and point values above.")
+print("   When you're ready, run the NEXT CELL to lock them in and start grading.")
+
+
+# ==============================
 # CELL 2 – BUBBLE GRADING SCRIPT
 # ==============================
 import cv2
