@@ -1,3 +1,174 @@
+How It Works (High-Level)
+
+Cell 1 – Settings & Widgets
+
+Shows widgets for:
+
+Listening answer key (L1–L10, options A–E)
+
+Structure answer key (S1–S20, options A–D)
+
+Reading answer key (R1–R10, options A–D)
+
+Point values per question for each section
+
+You can use 0 or leave blank to ignore a question.
+
+Cell 2 – Grading Script
+
+Reads the values from the widgets and builds:
+
+An ANSWER_KEY dictionary for each section.
+
+A POINTS dictionary for point values.
+
+Sets up:
+
+Fixed bubble coordinates for each question/option.
+
+Alignment using a template image.
+
+Score text positions on the page.
+
+Lets you:
+
+Upload the template image.
+
+Upload multiple student answer sheet images.
+
+Automatically:
+
+Align each sheet to the template.
+
+Detect filled bubbles for each question.
+
+Compare with the answer key.
+
+Draw circles and write section scores on the image.
+
+Save a CSV with scores for all students.
+
+Zip the colab_results folder and start a download.
+
+Answer Key Rules
+
+Listening: 10 questions, options A–E
+
+Structure: 20 questions, options A–D
+
+Reading: 10 questions, options A–D
+
+Use uppercase letters (A, B, C, D, E) in the widgets.
+
+Use 0 or leave empty to ignore a question (no points, no grading for that item).
+
+Example:
+
+Listening:
+
+L1 = A
+
+L2 = B
+
+L3 = 0 (ignored)
+
+Structure per question = 1.5
+
+Reading per question = 1.0
+
+Folder & Output Structure (in Colab)
+
+The script creates:
+
+colab_test_images/
+→ All uploaded student answer sheet images are moved here.
+
+colab_results/
+→ Output graded images and CSV file are saved here:
+
+bubble_grading_results.csv
+
+studentname_initial_graded.png
+
+studentname_matches.png (alignment debug image)
+
+graded_results.zip
+→ A zip file that contains the whole colab_results folder for download.
+
+Usage (Step-by-Step in Colab)
+
+Open the notebook in Google Colab.
+
+Run CELL 1:
+
+Type the correct answers in:
+
+Listening (L1–L10)
+
+Structure (S1–S20)
+
+Reading (R1–R10)
+
+Set point values for each section.
+
+Run CELL 2:
+
+Upload the template image (clean, aligned answer sheet).
+
+Upload all student answer sheets (PNG/JPG).
+
+Wait for the script to:
+
+Align and grade each sheet.
+
+Print scores in the Colab output.
+
+Save graded images and bubble_grading_results.csv.
+
+Download graded_results.zip when the download starts.
+
+Limitations / Notes
+
+The system assumes:
+
+All answer sheets are the same layout and resolution (2550x3300 after resizing).
+
+Bubbles are in the fixed positions defined in the script.
+
+Very poor scans, extreme rotations, or heavy shadows can cause misalignment or mis-detection.
+
+Current version:
+
+Only supports single correct answer per question.
+
+Writing, Speaking, and Platform scores are placeholders (set to 0.0 in the CSV) but ready for Stage 2.
+
+Future Improvements
+
+Support for multiple correct answers and partial credit.
+
+Better noise handling for low-quality scans.
+
+A small web UI or Streamlit app version outside Colab.
+
+Second-stage script to:
+
+Merge Writing/Speaking/Platform scores.
+
+Draw final grade and comments on the sheet.
+
+License
+
+You can add your preferred license here, for example:
+
+MIT License
+
+or “All rights reserved – for personal/educational use only.”
+
+Author
+
+Created by José Manuel Garayta (Joe) with the help of AI tools for classroom assessment automation.
+
 # ==============================
 # CELL 1 – SETTINGS & WIDGETS
 # ==============================
